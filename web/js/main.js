@@ -7,17 +7,28 @@
         return !!(string.search( compared ) + 1);
     }
 
-    search.on("keyup", function(){
+    function trHide ( fieldType ) {
+        
+        $(fieldType).each(function () {
 
-        $('.td-id').each(function () {
-
-            if( searchText($(this).text(), search.val()) === false ){
+            if( searchText( $(this).text(), search.val() ) === false ){
                 $(this).parent('tr').hide();
             }else{
                 $(this).parent('tr').show();
             }
 
         })
+
+    }
+
+    search.on("keyup", function(){
+
+        if( isNaN(search.val()) === true ){
+            trHide('.td-name');
+        }
+        else{
+            trHide('.td-id');
+        }
 
         if( search.val() === '' ){
             $('#orders_table tbody tr').show();
