@@ -11,6 +11,6 @@
     <title></title>
 </head>
 <body>
-
+    <h1>Some words added for git init</h1>
 </body>
 </html>
