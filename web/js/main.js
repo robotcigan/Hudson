@@ -1,5 +1,6 @@
 (function(){
 
+    //Поиск по id и name
     var search;
     search = $('#search');
 
@@ -7,7 +8,7 @@
         return !!(string.search( compared ) + 1);
     }
 
-    function trHide ( fieldType ) {
+    function trSearching( fieldType ) {
         
         $(fieldType).each(function () {
 
@@ -24,10 +25,10 @@
     search.on("keyup", function(){
 
         if( isNaN(search.val()) === true ){
-            trHide('.td-name');
+            trSearching('.td-name');
         }
         else{
-            trHide('.td-id');
+            trSearching('.td-id');
         }
 
         if( search.val() === '' ){
@@ -36,5 +37,13 @@
 
     })
 
+    //Сортировка элементов по возрастаниию/убыванию
+    $('#orders_table th').on( 'click', function(){
+
+        $('#orders_table tr').each(function(){
+            $(this).insertAfter( $('#orders_table tr').first() );
+        })
+
+    } )
 
 })();
