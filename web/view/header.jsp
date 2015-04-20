@@ -37,7 +37,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Арсений Иванов<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= request.getAttribute("localUser") %><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Действие</a></li>
                         <li><a href="#">Еще одно действие</a></li>

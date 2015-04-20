@@ -10,3 +10,6 @@
 #wrapper{
     margin-top: 45px;
 }
+#orders_table th{
+    cursor: pointer;
+}

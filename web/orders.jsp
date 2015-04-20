@@ -5,9 +5,10 @@
   Time: 22:00
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" %>
+
 
 <html>
 <head>
@@ -17,6 +18,7 @@
     <script src="lib/bootstrap.js"></script>
     <link rel="stylesheet" href="lib/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
+    <meta charset="UTF-8">
 </head>
 <body>
 

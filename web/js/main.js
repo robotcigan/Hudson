@@ -12,7 +12,7 @@
         
         $(fieldType).each(function () {
 
-            if( searchText( $(this).text(), search.val() ) === false ){
+            if( searchText( $(this).text().toLowerCase(), search.val().toLowerCase() ) === false ){
                 $(this).parent('tr').hide();
             }else{
                 $(this).parent('tr').show();
@@ -24,14 +24,14 @@
 
     search.on("keyup", function(){
 
-        if( isNaN(search.val()) === true ){
+        if( isNaN( search.val() ) === true ){
             trSearching('.td-name');
         }
         else{
             trSearching('.td-id');
         }
 
-        if( search.val() === '' ){
+        if( search.val() === '' || search.val() === ' ' ){
             $('#orders_table tbody tr').show();
         }
 
