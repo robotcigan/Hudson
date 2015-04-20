@@ -21,10 +21,14 @@ public class DBConnect {
         }
     }
 
+    // Определение логина пользователя Windows
+    String getUserName =  System.getProperty("user.home");
+    String USER_NAME = getUserName.substring(getUserName.lastIndexOf("Users")+6);
+
     public void getData(){
         try {
 
-            String query = "select * from users where login='Арсений'";
+            String query = "select * from users where login = '" + USER_NAME + "'";
             rs = st.executeQuery(query);
             while(rs.next()){
                 name = rs.getString("login");
