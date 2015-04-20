@@ -4,10 +4,12 @@
     var search;
     search = $('#search');
 
+    // Возвращает true если нашлись совпадения в сравниваемых строках
     function searchText( string, compared ) {
         return !!(string.search( compared ) + 1);
     }
 
+    // Удаление строк в которых не нашлось совпадений
     function trSearching( fieldType ) {
         
         $(fieldType).each(function () {
@@ -22,6 +24,7 @@
 
     }
 
+    // Активацие функций при вводе данных в input
     search.on("keyup", function(){
 
         if( isNaN( search.val() ) === true ){

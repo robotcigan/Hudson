@@ -20,6 +20,10 @@ public class DBConnection {
         }
     }
 
+    public void getQuery(){
+        
+    }
+
     public Connection getConnection() {
         return connection;
     }

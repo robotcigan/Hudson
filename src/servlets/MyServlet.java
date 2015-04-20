@@ -11,7 +11,6 @@ import javax.servlet.*;
 
 
 
-
 @WebServlet(name = "MyServlet", urlPatterns = {"/welcome", "/servlets/myServlet"})
 public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,27 +26,36 @@ public class MyServlet extends HttpServlet {
         String LOGIN = request.getParameter("login");
         String PASSWORD = request.getParameter("password");
 
-        String DB_LOGIN = "test";
+        // Хлам пример кода взятия параметров из java файлов
+        Main DBSelect = new Main();
+        int res = DBSelect.pow(4);
+        out.println(res);
+        String sample = DBSelect.test;
+        out.println(sample);
+
+        // Берет значения из java файла который выполняет селект sql
+        DBConnect connect = new DBConnect();
+        connect.getData();
+        String DB_LOGIN = connect.name;
 
         // Определение логина пользователя Windows
         String getUserName =  System.getProperty("user.home");
         String USER_NAME = getUserName.substring(getUserName.lastIndexOf("Users")+6);
+        // Переменная для пользователя Windows
         request.setAttribute("localUser", USER_NAME);
-        request.getRequestDispatcher("orders.jsp").forward(request, response);
 
-
-        out.println(LOGIN + PASSWORD);
-        out.println("<a href='orders.jsp'>Welcome " + LOGIN + "!</a>");
-        out.println( USER_NAME );
-
-        if( LOGIN.equals(DB_LOGIN) ){
+        // Проверка подлинности пользователя и перенаправление назад в случае неправильности
+        if( USER_NAME.equals(DB_LOGIN) ){
             out.println("<h1>Welcome " + LOGIN + "!</h1>");
         }
         else{
-            String back = new String("/");
+            String back = new String("hello.jsp");
             response.setStatus(response.SC_MOVED_TEMPORARILY);
             response.setHeader("Location", back);
         }
+
+        // Перенаправление на главную страницу с парамаметрами пользователя
+        request.getRequestDispatcher("orders.jsp").forward(request, response);
 
         out.flush();
         out.close();
