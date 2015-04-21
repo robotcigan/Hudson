@@ -13,6 +13,10 @@ import javax.servlet.*;
 
 @WebServlet(name = "MyServlet", urlPatterns = {"/welcome", "/servlets/myServlet"})
 public class MyServlet extends HttpServlet {
+
+    public String LOGIN;
+    public String PASSWORD;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -23,8 +27,8 @@ public class MyServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        String LOGIN = request.getParameter("login");
-        String PASSWORD = request.getParameter("password");
+        LOGIN = request.getParameter("login");
+        PASSWORD = request.getParameter("password");
 
         // Хлам пример кода взятия параметров из java файлов
         Main DBSelect = new Main();
@@ -37,6 +41,7 @@ public class MyServlet extends HttpServlet {
         DBConnect connect = new DBConnect();
         connect.getData();
         String DB_LOGIN = connect.name;
+        String DB_PASSWORD = connect.password;
 
         // Определение логина пользователя Windows
         String getUserName =  System.getProperty("user.home");
@@ -44,18 +49,24 @@ public class MyServlet extends HttpServlet {
         // Переменная для пользователя Windows
         request.setAttribute("localUser", USER_NAME);
 
+        int a = 3;
+
         // Проверка подлинности пользователя и перенаправление назад в случае неправильности
         if( USER_NAME.equals(DB_LOGIN) ){
-            out.println("<h1>Welcome " + LOGIN + "!</h1>");
+            // Перенаправление на главную страницу с парамаметрами пользователя
+            request.getRequestDispatcher("orders.jsp").forward(request, response);
         }
+        //else if( LOGIN.equals(DB_LOGIN) && PASSWORD.equals(DB_PASSWORD) ){
+            // Перенаправление на главную страницу с парамаметрами пользователя
+            //request.getRequestDispatcher("orders.jsp").forward(request, response);
+        //}
         else{
             String back = new String("hello.jsp");
             response.setStatus(response.SC_MOVED_TEMPORARILY);
             response.setHeader("Location", back);
         }
 
-        // Перенаправление на главную страницу с парамаметрами пользователя
-        request.getRequestDispatcher("orders.jsp").forward(request, response);
+
 
         out.flush();
         out.close();

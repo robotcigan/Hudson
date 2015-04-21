@@ -6,6 +6,9 @@ import java.sql.*;
 public class DBConnect {
 
     public String name;
+    public String password;
+    public String query;
+
 
     private Connection con;
     private Statement st;
@@ -25,14 +28,17 @@ public class DBConnect {
     String getUserName =  System.getProperty("user.home");
     String USER_NAME = getUserName.substring(getUserName.lastIndexOf("Users")+6);
 
+
     public void getData(){
         try {
 
-            String query = "select * from users where login = '" + USER_NAME + "'";
+                query = "select * from users where login = '" + USER_NAME + "'";
+
             rs = st.executeQuery(query);
             while(rs.next()){
                 name = rs.getString("login");
-                System.out.println("Name from DB is: " + name);
+                password = rs.getString("password");
+                System.out.println("Name from DB is: " + name + password);
             }
 
         }catch (Exception ex){
