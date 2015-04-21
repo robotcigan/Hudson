@@ -8,7 +8,11 @@ public class DBConnect {
     public String name;
     public String password;
     public String query;
+    public Boolean findUser;
 
+    MyServlet userData = new MyServlet();
+    public String servletName = userData.LOGIN;
+    public String servletPassword = userData.PASSWORD;
 
     private Connection con;
     private Statement st;
@@ -32,13 +36,26 @@ public class DBConnect {
     public void getData(){
         try {
 
-                query = "select * from users where login = '" + USER_NAME + "'";
-
+            query = "select * from users where login = '" + USER_NAME + "'";
             rs = st.executeQuery(query);
             while(rs.next()){
                 name = rs.getString("login");
-                password = rs.getString("password");
+                //password = rs.getString("password");
                 System.out.println("Name from DB is: " + name + password);
+                if(USER_NAME == name){
+                    findUser = true;
+                }
+            }
+
+            if (findUser == null){
+
+                query = "select * from users where login = '" + servletName + "'" + " and password = '" + servletPassword + "'";
+                rs = st.executeQuery(query);
+                while(rs.next()){
+                    name = rs.getString("login");
+                    password = rs.getString("password");
+                }
+                System.out.println(query);
             }
 
         }catch (Exception ex){

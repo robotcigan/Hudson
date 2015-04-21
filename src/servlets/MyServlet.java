@@ -14,21 +14,21 @@ import javax.servlet.*;
 @WebServlet(name = "MyServlet", urlPatterns = {"/welcome", "/servlets/myServlet"})
 public class MyServlet extends HttpServlet {
 
-    public String LOGIN;
-    public String PASSWORD;
+    public String LOGIN = "test";
+    public String PASSWORD = "1234";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        LOGIN = request.getParameter("login");
-        PASSWORD = request.getParameter("password");
+        // LOGIN = request.getParameter("login");
+        // PASSWORD = request.getParameter("password");
 
         // Хлам пример кода взятия параметров из java файлов
         Main DBSelect = new Main();
@@ -49,23 +49,30 @@ public class MyServlet extends HttpServlet {
         // Переменная для пользователя Windows
         request.setAttribute("localUser", USER_NAME);
 
-        int a = 3;
+
+        System.out.println( DB_LOGIN );
+        System.out.println( LOGIN );
+        System.out.println( DB_PASSWORD );
+        System.out.println( PASSWORD );
+
+        System.out.println(LOGIN.equals(DB_LOGIN));
+        System.out.println(PASSWORD.equals(DB_PASSWORD));
+
 
         // Проверка подлинности пользователя и перенаправление назад в случае неправильности
         if( USER_NAME.equals(DB_LOGIN) ){
             // Перенаправление на главную страницу с парамаметрами пользователя
             request.getRequestDispatcher("orders.jsp").forward(request, response);
         }
-        //else if( LOGIN.equals(DB_LOGIN) && PASSWORD.equals(DB_PASSWORD) ){
+        else if( LOGIN.equals(DB_LOGIN) && PASSWORD.equals(DB_PASSWORD) ){
             // Перенаправление на главную страницу с парамаметрами пользователя
-            //request.getRequestDispatcher("orders.jsp").forward(request, response);
-        //}
+            request.getRequestDispatcher("orders.jsp").forward(request, response);
+        }
         else{
             String back = new String("hello.jsp");
             response.setStatus(response.SC_MOVED_TEMPORARILY);
             response.setHeader("Location", back);
         }
-
 
 
         out.flush();
