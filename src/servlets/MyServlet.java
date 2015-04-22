@@ -18,12 +18,12 @@ public class MyServlet extends HttpServlet {
     public String PASSWORD = "1234";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
@@ -73,7 +73,6 @@ public class MyServlet extends HttpServlet {
             response.setStatus(response.SC_MOVED_TEMPORARILY);
             response.setHeader("Location", back);
         }
-
 
         out.flush();
         out.close();

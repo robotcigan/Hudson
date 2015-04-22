@@ -18,7 +18,10 @@
                 </li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
-                <input type="text" class="form-control"  id="search" placeholder="Поиск">
+                <div class="form-group">
+                    <input type="text" class="form-control"  id="search" placeholder="Поиск">
+                </div>
+                <button class="btn btn-success" id="excel-export">Экспорт в Excel</button>
             </form>
 
             <ul class="nav navbar-nav navbar-right">
@@ -41,7 +44,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Действие</a></li>
                         <li><a href="#">Еще одно действие</a></li>
-                        <li><a href="#">Выйти</a></li>
+                        <li><a href="hello.jsp">Выйти</a></li>
                     </ul>
                 </li>
 

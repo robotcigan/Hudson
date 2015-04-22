@@ -49,4 +49,15 @@
 
     } )
 
+
+
+    // Экспорт в excel
+    $("#excel-export").click(function(){
+        $("#orders_table").table2excel({
+            // exclude CSS class
+            exclude: ".noExl",
+            name: "Orders"
+        });
+    });
+
 })();

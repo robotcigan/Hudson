@@ -18,11 +18,14 @@
     <script src="lib/bootstrap.js"></script>
     <link rel="stylesheet" href="lib/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
+    <script src="lib/jquery.table2excel.js"></script>
     <meta charset="UTF-8">
 </head>
 <body>
 
 <%@ include file="view/header.jsp" %>
+
+<div id="view-order"></div>
 
 <div id="wrapper">
 
