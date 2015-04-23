@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Арсений
-  Date: 10.04.2015
-  Time: 22:00
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page pageEncoding="UTF-8" %>
 
@@ -23,6 +15,16 @@
 </head>
 <body>
 
+<%--Защита от вхождения в обход аунтентификации через адресную строку--%>
+<%--
+<%
+    if(request.getAttribute("localUser") == null){
+        String back = new String("hello.jsp");
+        response.setStatus(response.SC_MOVED_TEMPORARILY);
+        response.setHeader("Location", back);
+    }
+%>
+--%>
 <%@ include file="view/header.jsp" %>
 
 <div id="view-order"></div>
@@ -34,6 +36,7 @@
 <%@ include file="view/orders_view.jsp" %>
 
 </div>
+
 
 <script src="js/main.js"></script>
 </body>

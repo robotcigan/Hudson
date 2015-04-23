@@ -10,9 +10,9 @@ public class DBConnect {
     public String query;
     public Boolean findUser;
 
-    MyServlet userData = new MyServlet();
-    public String servletName = userData.LOGIN;
-    public String servletPassword = userData.PASSWORD;
+    //MyServlet userData = new MyServlet();
+    //public String servletName = userData.LOGIN;
+    //public String servletPassword = userData.PASSWORD;
 
     private Connection con;
     private Statement st;
@@ -33,7 +33,7 @@ public class DBConnect {
     String USER_NAME = getUserName.substring(getUserName.lastIndexOf("Users")+6);
 
 
-    public void getData(){
+    public void getData(String LOGIN, String PASSWORD){
         try {
 
             query = "select * from users where login = '" + USER_NAME + "'";
@@ -49,7 +49,7 @@ public class DBConnect {
 
             if (findUser == null){
 
-                query = "select * from users where login = '" + servletName + "'" + " and password = '" + servletPassword + "'";
+                query = "select * from users where login = '" + LOGIN + "'" + " and password = '" + PASSWORD + "'";
                 rs = st.executeQuery(query);
                 while(rs.next()){
                     name = rs.getString("login");
@@ -57,6 +57,10 @@ public class DBConnect {
                 }
                 System.out.println(query);
             }
+
+            System.out.println(name);
+            System.out.println(password);
+
 
         }catch (Exception ex){
             System.out.println(ex);
