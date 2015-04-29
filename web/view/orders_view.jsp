@@ -7,19 +7,17 @@
                    user="root"  password="admin"/>
 
 
-<% String id = request.getParameter("id"); %>
-<c:set var="id" value='<%= id %>'/>
-
 <sql:query var="sql" dataSource="${MySql}">
     select * from QUERY
 </sql:query>
 
 
-    <table id="orders_table" class="table table-striped">
+    <table id="orders_table" class="table table-striped table-hover">
 
         <thead>
             <th>ID Заказа</th>
             <th>Наименование</th>
+            <th>Кем создано</th>
             <th>Содержание</th>
             <th>Действие</th>
             <th>Наименование точки</th>
@@ -34,10 +32,11 @@
         <c:forEach var="row" items="${sql.rows}">
         <form action="change_order.jsp" method="get">
 
-          <tr>
+          <tr data-toggle="modal" data-target="#orderModal">
 
             <td class="td-id">${row.id_query}</td>
             <td class="td-name">${row.name}</td>
+            <td>${row.creator}</td>
             <td>${row.content}</td>
             <td>${row.action}</td>
             <td >${row.point_name}</td>

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Арсений
-  Date: 11.04.2015
-  Time: 14:50
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="lib/simple-sidebar.css"/>
 
@@ -15,10 +8,10 @@
     <ul class="sidebar-nav">
 
         <li>
-            <a href="#">Все заказы</a>
+            <a href="#">Все заказы<span class="badge">119</span></a>
         </li>
-        <li>
-            <a href="#">Редактирование заказов</a>
+        <li id="createOrder" data-toggle="modal" data-target="#orderModal">
+            <a href="#">Создать заказ</a>
         </li>
         <li>
             <a href="#">Overview</a>

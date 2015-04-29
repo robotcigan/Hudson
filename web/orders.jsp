@@ -4,19 +4,17 @@
 
 <html>
 <head>
-    <title>MyCRM</title>
+    <title>Hudson</title>
     <link rel="stylesheet" href="lib/bootstrap-yeti.min.css"/>
     <script src="lib/jquery-2.1.1.js"></script>
     <script src="lib/bootstrap.js"></script>
-    <link rel="stylesheet" href="lib/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
-    <script src="lib/jquery.table2excel.js"></script>
     <meta charset="UTF-8">
 </head>
 <body>
 
 <%--Защита от вхождения в обход аунтентификации через адресную строку--%>
-<%--
+
 <%
     if(request.getAttribute("localUser") == null){
         String back = new String("hello.jsp");
@@ -24,8 +22,10 @@
         response.setHeader("Location", back);
     }
 %>
---%>
+
 <%@ include file="view/header.jsp" %>
+
+<%@ include file="view/order.jsp" %>
 
 <div id="view-order"></div>
 
@@ -37,7 +37,8 @@
 
 </div>
 
-
+<script src="lib/jquery.table2excel.js"></script>
+<link rel="stylesheet" href="lib/font-awesome.min.css"/>
 <script src="js/main.js"></script>
 </body>
 </html>

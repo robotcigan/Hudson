@@ -57,24 +57,29 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 30px;
+    /*text-indent: 20px;*/
+    line-height: 35px;
 }
 
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
     color: #008cba;
+    padding-left: 20px;
+}
+
+.sidebar-nav li a span{
+    margin-left: 5px;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: #008cba;
+    background-color: #008cba;
 }
 
 .sidebar-nav li a:active,

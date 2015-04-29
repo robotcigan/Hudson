@@ -34,11 +34,11 @@ public class MyServlet extends HttpServlet {
 
 
         // Хлам пример кода взятия параметров из java файлов
-        Main DBSelect = new Main();
-        int res = DBSelect.pow(4);
-        out.println(res);
-        String sample = DBSelect.test;
-        out.println(sample);
+        //Main DBSelect = new Main();
+        //int res = DBSelect.pow(4);
+        //out.println(res);
+        //String sample = DBSelect.test;
+        //out.println(sample);
 
         // Берет значения из java файла который выполняет селект sql
         DBConnect connect = new DBConnect();
@@ -53,10 +53,10 @@ public class MyServlet extends HttpServlet {
         request.setAttribute("localUser", USER_NAME);
 
 
-        System.out.println( "DB_LOGIN " + DB_LOGIN );
-        System.out.println( "LOGIN " + LOGIN );
-        System.out.println( "DB_PASSWORD " + DB_PASSWORD );
-        System.out.println( "PASSWORD " + PASSWORD );
+        //System.out.println( "DB_LOGIN " + DB_LOGIN );
+        //System.out.println( "LOGIN " + LOGIN );
+        //System.out.println( "DB_PASSWORD " + DB_PASSWORD );
+        //System.out.println( "PASSWORD " + PASSWORD );
 
         //System.out.println(LOGIN.equals(DB_LOGIN));
         //System.out.println(PASSWORD.equals(DB_PASSWORD));

@@ -37,7 +37,7 @@ public class DBConnect {
             while(rs.next()){
                 name = rs.getString("login");
                 //password = rs.getString("password");
-                System.out.println("Name from DB is: " + name + password);
+                //System.out.println("Name from DB is: " + name + password);
                 if(USER_NAME == name){
                     findUser = true;
                 }
@@ -63,30 +63,58 @@ public class DBConnect {
         }
     }
 
-    public void saveQuery( String id_query, String queryName, String content , String action, String point_name, String id_type_query, String date_sla, String date_to, String date_from, String date_change  ){
+    public void Query( String id_query, String queryName, String creator,String content , String action, String point_name, String id_type_query, String date_sla, String date_to, String date_from, String date_change, String type  ){
         try {
 
             //String updateQuery = " UPDATE query SET name = ?, content = ? WHERE ID_QUERY = '" + id_query + "'";
-            String updateQuery = " UPDATE query SET name = ?, content = ?, action = ?, point_name = ?, id_type_query = ?, date_sla = ?, date_to = ?, date_from = ?, date_change = ? WHERE ID_QUERY = ? ";
+            String updateQuery = " UPDATE query SET name = ?, creator=?,content = ?, action = ?, point_name = ?, id_type_query = ?, date_sla = ?, date_to = ?, date_from = ?, date_change = ? WHERE ID_QUERY = ? ";
+            String newQuery = " INSERT INTO QUERY ( name, creator, content, action, point_name, id_type_query, date_sla,  date_to, date_from, date_change, ID_QUERY) values (?,?,?,?,?,?,?,?,?,?,?)";
             //st.executeUpdate( updateQuery );
-            PreparedStatement pst = con.prepareStatement( updateQuery );
-            pst.setString( 1, queryName );
-            pst.setString( 2, content );
-            pst.setString( 3, action );
-            pst.setString( 4, point_name );
-            pst.setString( 5, id_type_query );
-            pst.setString( 6, date_sla );
-            pst.setString( 7, date_to );
-            pst.setString( 8, date_from );
-            pst.setString( 9, date_change );
-            // Выбор строки, замыкающее значение
-            pst.setString( 10, id_query );
 
-            System.out.println( id_query + queryName + content + action + point_name + id_type_query + date_sla + date_to + date_from + date_change );
-            System.out.println(updateQuery );
+            PreparedStatement pst = con.prepareStatement( updateQuery );
+
+            if( type.equals("new") ){
+                pst = con.prepareStatement( newQuery );
+            }
+            else{
+                System.out.println("Not new");
+            }
+
+            pst.setString( 1, queryName );
+            pst.setString( 2, creator );
+            pst.setString( 3, content );
+            pst.setString( 4, action );
+            pst.setString( 5, point_name );
+            pst.setString( 6, id_type_query );
+            pst.setString( 7, date_sla );
+            pst.setString( 8, date_to );
+            pst.setString( 9, date_from );
+            pst.setString( 10, date_change );
+            // Выбор строки, замыкающее значение
+            pst.setString( 11, id_query );
+
+            System.out.println( id_query + queryName + creator + content + action + point_name + id_type_query + date_sla + date_to + date_from + date_change );
 
             pst.executeUpdate();
 
+        }catch (Exception ex){
+            System.out.println(ex);
+        }
+    }
+
+    public void deleteQuery(String id_query, String creator){
+        try{
+            // (Пока не работает на вошедших в ручную пользователей)Если создатель заказа не совпадает с пользователем windows, то нельзя удалять заказ
+            if(creator.equals(USER_NAME)){
+                String deleteQuery = "DELETE FROM QUERY WHERE id_query=?";
+                PreparedStatement pst = con.prepareStatement( deleteQuery );
+                pst.setString( 1, id_query );
+                pst.executeUpdate();
+            }
+            else{
+                // Использование нескольких одинаковых кавычек: deleteError = "<div class=\"alert alert-danger\" role=\"alert\">Вы не можете удалить этот заказ</div>";
+                System.out.println("Вы не можете удалить заказ, который создан не вами");
+            }
         }catch (Exception ex){
             System.out.println(ex);
         }
