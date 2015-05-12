@@ -7,8 +7,16 @@
                    user="root"  password="admin"/>
 
 
+<%
+    String agreement = request.getParameter("agreement");
+    if(agreement == null){
+        agreement = "true";
+    }
+%>
+
+
 <sql:query var="sql" dataSource="${MySql}">
-    select * from QUERY
+    select * from QUERY where agreement = '<%= agreement %>'
 </sql:query>
 
 
@@ -30,7 +38,6 @@
 
         <tbody>
         <c:forEach var="row" items="${sql.rows}">
-        <form action="change_order.jsp" method="get">
 
           <tr data-toggle="modal" data-target="#orderModal">
 
@@ -50,5 +57,4 @@
         </c:forEach>
         </tbody>
     </table>
-
 

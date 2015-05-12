@@ -9,7 +9,7 @@
 <% String id_query = request.getParameter("id_query"); %>
 
 <sql:query var="rs0" dataSource="${MySql}">
-    select ID_QUERY, NAME, CONTENT, DATE_TO, DATE_FROM, DATE_CHANGE, DATE_SLA, ACTION, POINT_NAME, ID_TYPE_QUERY, creator from QUERY where ID_QUERY='<%= id_query %>'
+    select ID_QUERY, NAME, CONTENT, DATE_TO, DATE_FROM, DATE_CHANGE, DATE_SLA, ACTION, POINT_NAME, ID_TYPE_QUERY, creator, agreement from QUERY where ID_QUERY='<%= id_query %>'
 </sql:query>
 
 
@@ -51,30 +51,34 @@
             <div class="form-group">
                 <span>Дата окончания срока</span>
                 <div class="input-group">
-                    <input class="form-control form-control" type="date" name="date_sla" value="${row.date_sla}">
+                    <input class="form-control" type="date" name="date_sla" value="${row.date_sla}">
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
             </div>
             <div class="form-group">
                 <span>Дата начала</span>
                 <div class="input-group">
-                    <input class="form-control form-control" type="date" name="date_to" value="${row.date_to}">
+                    <input class="form-control" type="date" name="date_to" value="${row.date_to}">
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
             </div>
             <div class="form-group">
                 <span>Дата конечная</span>
                 <div class="input-group">
-                    <input class="form-control form-control" type="date" name="date_from" value="${row.date_from}">
+                    <input class="form-control" type="date" name="date_from" value="${row.date_from}">
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
             </div>
             <div class="form-group">
                 <span>Дата изменения</span>
                 <div class="input-group">
-                    <input class="form-control form-control" type="date" name="date_change" value="${row.date_change}">
+                    <input class="form-control" type="date" name="date_change" value="${row.date_change}">
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
+            </div>
+            <div class="form-group">
+                <span>Согласован</span>
+                <input class="form-control" type="checkbox" name="agreement">
             </div>
 
         </c:forEach>

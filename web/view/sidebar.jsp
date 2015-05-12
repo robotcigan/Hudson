@@ -14,7 +14,7 @@
             <a href="#">Создать заказ</a>
         </li>
         <li>
-            <a href="#">Overview</a>
+            <a href="/view/charts.jsp">Графики</a>
         </li>
         <li>
             <a href="#">Events</a>

@@ -27,7 +27,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li>
-                    <a  href="/mon/monitoring.jsp">Согласующие</a>
+                    <a  href="/monitoring?agreement=false">На согласование</a>
                 </li>
 
                 <li class="dropdown">

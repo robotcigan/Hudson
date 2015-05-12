@@ -48,6 +48,17 @@
     margin-bottom: 10px;
 }
 
+.form-group span{
+    float: left;
+    margin-right: 10px;
+    line-height: 35px;
+}
+
+.form-control{
+    /*width: auto;*/
+    height: 35px;
+}
+
 .order{
     width: 50%;
     height: 65%;
@@ -64,4 +75,16 @@
 }
 #view-order ul li input{
     line-height: 1em;
+}
+
+#ajaxResult{
+    position: fixed;
+    display: block;
+    z-index: 99999999;
+    right: 0;
+    bottom: -50px;
+    padding: 15px;
+    background: #fff;
+    border-top: 3px solid #008cba;
+    transition: all .2s;
 }

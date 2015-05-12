@@ -31,11 +31,14 @@
 
 <div id="wrapper">
 
+
 <%@ include file="view/sidebar.jsp" %>
 
 <%@ include file="view/orders_view.jsp" %>
 
 </div>
+
+<div id="ajaxResult"></div>
 
 <script src="lib/jquery.table2excel.js"></script>
 <link rel="stylesheet" href="lib/font-awesome.min.css"/>

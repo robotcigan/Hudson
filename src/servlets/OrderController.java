@@ -13,9 +13,9 @@ public class OrderController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/plain");
-        //String element = request.getParameter("element");
+        response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        //out.print("<h1>Hello </h1>" + element);
+
 
         String id_query = request.getParameter("id_query");
         String queryName = request.getParameter("name");
@@ -29,6 +29,8 @@ public class OrderController extends HttpServlet {
         String date_from = request.getParameter("date_from");
         String date_change = request.getParameter("date_change");
 
+        String agreement = request.getParameter("agreement");
+
         // Определение типа поступившего запроса
         String type = request.getParameter("type");
 
@@ -40,7 +42,7 @@ public class OrderController extends HttpServlet {
         if(type.equals("delete")){
             connect.deleteQuery( id_query, creator );
         }else{
-            connect.Query( id_query, queryName, creator, content, action, point_name, id_type_query, date_sla, date_to, date_from, date_change, type );
+            connect.Query( id_query, queryName, creator, content, action, point_name, id_type_query, date_sla, date_to, date_from, date_change, agreement,type );
         }
 
 

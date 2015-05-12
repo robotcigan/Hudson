@@ -63,15 +63,15 @@ public class DBConnect {
         }
     }
 
-    public void Query( String id_query, String queryName, String creator,String content , String action, String point_name, String id_type_query, String date_sla, String date_to, String date_from, String date_change, String type  ){
+    public void Query( String id_query, String queryName, String creator,String content , String action, String point_name, String id_type_query, String date_sla, String date_to, String date_from, String date_change, String agreement,String type  ){
         try {
 
             //String updateQuery = " UPDATE query SET name = ?, content = ? WHERE ID_QUERY = '" + id_query + "'";
-            String updateQuery = " UPDATE query SET name = ?, creator=?,content = ?, action = ?, point_name = ?, id_type_query = ?, date_sla = ?, date_to = ?, date_from = ?, date_change = ? WHERE ID_QUERY = ? ";
-            String newQuery = " INSERT INTO QUERY ( name, creator, content, action, point_name, id_type_query, date_sla,  date_to, date_from, date_change, ID_QUERY) values (?,?,?,?,?,?,?,?,?,?,?)";
+            String updateQuery = " UPDATE query SET name = ?, creator=?,content = ?, action = ?, point_name = ?, id_type_query = ?, date_sla = ?, date_to = ?, date_from = ?, date_change = ?, agreement = ? WHERE ID_QUERY = ? ";
+            String newQuery = " INSERT INTO QUERY ( name, creator, content, action, point_name, id_type_query, date_sla,  date_to, date_from, date_change, agreement, ID_QUERY) values (?,?,?,?,?,?,?,?,?,?,?,?)";
             //st.executeUpdate( updateQuery );
 
-            PreparedStatement pst = con.prepareStatement( updateQuery );
+            PreparedStatement pst = con.prepareStatement(updateQuery);
 
             if( type.equals("new") ){
                 pst = con.prepareStatement( newQuery );
@@ -90,10 +90,12 @@ public class DBConnect {
             pst.setString( 8, date_to );
             pst.setString( 9, date_from );
             pst.setString( 10, date_change );
+            // Согласован заказ или нет
+            pst.setString( 11, agreement );
             // Выбор строки, замыкающее значение
-            pst.setString( 11, id_query );
+            pst.setString( 12, id_query );
 
-            System.out.println( id_query + queryName + creator + content + action + point_name + id_type_query + date_sla + date_to + date_from + date_change );
+            System.out.println( id_query + queryName + creator + content + action + point_name + id_type_query + date_sla + date_to + date_from + date_change + agreement );
 
             pst.executeUpdate();
 
