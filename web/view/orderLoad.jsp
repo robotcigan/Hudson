@@ -20,38 +20,59 @@
 
             <div class="form-group">
                 <span>ID Заказа</span>
-                <input class="form-control" type="text" name="id_query" value="${row.id_query}">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="id_query" value="${row.id_query}">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
             </div>
             <div class="form-group">
                 <span>Наименование</span>
-                <input class="form-control" type="text" name="name" value="${row.name}">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="name" value="${row.name}">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
             </div>
             <div class="form-group">
                 <span>Кем создано</span>
-                <input class="form-control" type="text" disabled name="creator" value="${row.creator}">
+                <div class="input-group">
+                    <input class="form-control" type="text" disabled name="creator" value="${row.creator}">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
             </div>
             <div class="form-group">
                 <span>Содержание</span>
-                <input class="form-control" type="text" name="content" value="${row.content}">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="content" value="${row.content}">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
             </div>
             <div class="form-group">
                 <span>Действие</span>
-                <input class="form-control" type="text" name="action" value="${row.action}">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="action" value="${row.action}">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
             </div>
             <div class="form-group">
                 <span>Наименование точки</span>
-                <input class="form-control" type="text" name="point_name" value="${row.point_name}">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="point_name" value="${row.point_name}">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
             </div>
 
 
             <div class="form-group">
                 <span>Id класса запроса</span>
-                <input class="form-control" type="text" name="id_type_query" value="${row.id_type_query}">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="id_type_query" value="${row.id_type_query}">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
             </div>
             <div class="form-group">
                 <span>Дата окончания срока</span>
                 <div class="input-group">
-                    <input class="form-control" type="date" name="date_sla" value="${row.date_sla}">
+                    <input class="form-control" type="datetime local" name="date_sla" value="${row.date_sla}">
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
             </div>

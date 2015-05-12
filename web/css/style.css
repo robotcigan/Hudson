@@ -44,13 +44,17 @@
     font-size: 18px;
 }
 
+.modal .close{
+    color: #fff;
+}
+
 .form-group{
     margin-bottom: 10px;
 }
 
 .form-group span{
     float: left;
-    margin-right: 10px;
+    margin-right: 20px;
     line-height: 35px;
 }
 
