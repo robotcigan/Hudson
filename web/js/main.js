@@ -57,6 +57,9 @@
     $('#orders_table tbody tr').on("click", function(){
         id_query = $(this).children('.td-id').text();
         $("#orderLoad").load( "/view/orderLoad.jsp", { "id_query": id_query } );
+        $("#saveOrder").show();
+        $("#deleteOrder").show();
+        $("#myModalLabel").text("Редактирование");
     });
 
     // Открытие создания заказа
@@ -64,6 +67,9 @@
         $("#orderLoad").load( "/view/orderNew.jsp" );
         // Определяет тип поступаещего запроса
         type = "new";
+        $("#saveOrder").hide();
+        $("#deleteOrder").hide();
+        $("#myModalLabel").text("Создание заказа");
     });
 
     var changes;
@@ -90,7 +96,6 @@
         date_from = $( "input[name$='date_from']").val();
         date_change = $( "input[name$='date_change']").val();
 
-        // Галочка согласования
         agreement = $( "input[name$='agreement']").is(":checked");
 
         // Определяет тип поступаещего запроса
@@ -138,7 +143,7 @@
         date_from = $( "input[name$='date_from']").val();
         date_change = $( "input[name$='date_change']").val();
 
-        agreement = $( "input[name$='agreement']").val();
+        agreement = $( "input[name$='agreement']").is(":checked");
 
         // Определяет тип поступаещего запроса
         type = "new";
@@ -170,35 +175,43 @@
     // Отправка на удаление заказа
     $('#deleteOrder').on("click", function(){
 
-        var type, creator;
+        var type, creator, confirming;
 
-        id_query = $( "input[name$='id_query']").val();
-        creator = $( "input[name$='creator']").val();
+        confirming = confirm("Вы уверенны что хотите его удалить?");
 
-        // Определяет тип поступаещего запроса
-        type = "delete";
+        if( confirming === true ){
 
-        $.ajax({
-            method: "POST",
-            url: "/order",
-            data: { id_query: id_query, creator: creator,type: type },
-            success: function(){
-                $('#ajaxResult').text("Заказ удален!");
-                $('#ajaxResult').css({
-                    "display": "block" ,
-                    "bottom": 0
-                });
-                setTimeout( '$("#ajaxResult").css("bottom", -55)', 5000 );
-            },
-            error : function() {
-                alert('Ошибка!');
-            },
-            statusCode: {
-                404: function() {
-                    alert( "Страница отсутствует!" );
+            id_query = $( "input[name$='id_query']").val();
+            creator = $( "input[name$='creator']").val();
+
+            // Определяет тип поступаещего запроса
+            type = "delete";
+
+            $.ajax({
+                method: "POST",
+                url: "/order",
+                data: { id_query: id_query, creator: creator,type: type },
+                success: function(){
+                    $('#ajaxResult').text("Заказ удален!");
+                    $('#ajaxResult').css({
+                        "display": "block" ,
+                        "bottom": 0
+                    });
+                    setTimeout( '$("#ajaxResult").css("bottom", -55)', 5000 );
+                },
+                error : function() {
+                    alert('Ошибка!');
+                },
+                statusCode: {
+                    404: function() {
+                        alert( "Страница отсутствует!" );
+                    }
                 }
-            }
-        });
+            });
+
+        }
+
+
 
     });
 

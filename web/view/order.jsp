@@ -13,7 +13,6 @@
             <div id="orderLoad" class="modal-body">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                 <button id="deleteOrder" type="button" class="btn btn-danger">Удалить</button>
                 <button id="saveNewOrder" type="button" class="btn btn-success">Создать</button>
                 <button id="saveOrder" type="button" class="btn btn-primary">Сохранить</button>

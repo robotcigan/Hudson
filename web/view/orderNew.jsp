@@ -1,74 +1,87 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<form action="change_order.jsp" method="get">
+<form>
 
-    <ul>
-
-        <div class="row">
-
-            <div class="col-xs-6">
-
-                <li>
-                    <p>ID Заказа</p>
-                    <input class="sql_result" type="text" name="id_query">
-                <li>
-                    <p>Наименование</p>
-                    <input class="sql_result" type="text" name="name">
-                </li>
-                <li>
-                    <p>Содержание</p>
-                    <input class="sql_result" type="text" name="content">
-                </li>
-                <li>
-                    <p>Действие</p>
-                    <input class="sql_result" type="text" name="action">
-                </li>
-                <li >
-                    <p >Наименование точки</p>
-                    <input class="sql_result" type="text" name="point_name">
-                </li>
-
+    <div class="form-group">
+            <span>ID Заказа</span>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="id_query">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <span>Наименование</span>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="name">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <span>Кем создано</span>
+                <div class="input-group">
+                    <input class="form-control" type="text" disabled name="creator">
+                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <span>Содержание</span>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="content">
+                    <div class="input-group-addon"><i class="fa fa-comment-o"></i></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <span>Действие</span>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="action">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <span>Наименование точки</span>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="point_name">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
             </div>
 
-            <div class="col-xs-6">
 
-                <li>
-                    <p>Id класса запроса</p>
-                    <input class="sql_result" type="text" name="id_type_query">
-                </li>
-                <li >
-                    <p >Дата окончания срока</p>
-                    <div class="input-group">
-                        <input class="sql_result form-control" type="date" name="date_sla">
-                        <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
-                    </div>
-                </li>
-                <li>
-                    <p>Дата начала</p>
-                    <div class="input-group">
-                        <input class="sql_result form-control" type="date" name="date_to">
-                        <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
-                    </div>
-                </li>
-                <li >
-                    <p>Дата конечная</p>
-                    <div class="input-group">
-                        <input class="sql_result form-control" type="date" name="date_from">
-                        <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
-                    </div>
-                </li>
-                <li>
-                    <p>Дата изменения</p>
-                    <div class="input-group">
-                        <input class="sql_result form-control" type="date" name="date_change">
-                        <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
-                    </div>
-                </li>
-
+            <div class="form-group">
+                <span>Id класса запроса</span>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="id_type_query">
+                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                </div>
             </div>
-
-        </div>
-
-    </ul>
+            <hr>
+            <div class="form-group">
+                <span>Дата окончания срока</span>
+                <div class="input-group">
+                    <input class="form-control" type="date" name="date_sla">
+                    <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <span>Дата начала</span>
+                <div class="input-group">
+                    <input class="form-control" type="date" name="date_to">
+                    <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <span>Дата конечная</span>
+                <div class="input-group">
+                    <input class="form-control" type="date" name="date_from">
+                    <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <span>Дата изменения</span>
+                <div class="input-group">
+                    <input class="form-control" type="date" name="date_change">
+                    <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
+                </div>
+            </div>
 
 </form>

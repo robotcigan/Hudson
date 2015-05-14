@@ -25,6 +25,7 @@
                     <div class="input-group-addon"><i class="fa fa-check"></i></div>
                 </div>
             </div>
+            <hr>
             <div class="form-group">
                 <span>Наименование</span>
                 <div class="input-group">
@@ -36,14 +37,14 @@
                 <span>Кем создано</span>
                 <div class="input-group">
                     <input class="form-control" type="text" disabled name="creator" value="${row.creator}">
-                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
                 </div>
             </div>
             <div class="form-group">
                 <span>Содержание</span>
                 <div class="input-group">
                     <input class="form-control" type="text" name="content" value="${row.content}">
-                    <div class="input-group-addon"><i class="fa fa-check"></i></div>
+                    <div class="input-group-addon"><i class="fa fa-comment-o"></i></div>
                 </div>
             </div>
             <div class="form-group">
@@ -69,10 +70,11 @@
                     <div class="input-group-addon"><i class="fa fa-check"></i></div>
                 </div>
             </div>
+            <hr>
             <div class="form-group">
                 <span>Дата окончания срока</span>
                 <div class="input-group">
-                    <input class="form-control" type="datetime local" name="date_sla" value="${row.date_sla}">
+                    <input class="form-control" type="date" name="date_sla" value="${row.date_sla}">
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
             </div>
@@ -97,6 +99,7 @@
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
             </div>
+            <hr>
             <div class="form-group">
                 <span>Согласован</span>
                 <input class="form-control" type="checkbox" name="agreement">
