@@ -8,7 +8,7 @@
     <ul class="sidebar-nav">
 
         <li>
-            <a href="#">Все заказы<span class="badge">119</span></a>
+            <a href="/monitoring">Все заказы<span class="badge">119</span></a>
         </li>
         <li id="createOrder" data-toggle="modal" data-target="#orderModal">
             <a href="#">Создать заказ</a>

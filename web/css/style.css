@@ -81,6 +81,10 @@
     line-height: 1em;
 }
 
+.hideAgreement{
+    display: none;
+}
+
 #ajaxResult{
     position: fixed;
     display: block;

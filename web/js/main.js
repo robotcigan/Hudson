@@ -98,6 +98,11 @@
 
         agreement = $( "input[name$='agreement']").is(":checked");
 
+        if( $( "input[name$='agreement']").hasClass('hideAgreement') ){
+            agreement = true;
+        }
+
+
         // Определяет тип поступаещего запроса
         type = "change";
 

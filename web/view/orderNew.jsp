@@ -1,4 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<!-- Установка сегоднейшей даты -->
+<c:set var="now" value="<%=new java.util.Date()%>" />
+<fmt:formatDate type="date" value="${now}" var="TODAY" pattern="yyyy-MM-dd"/>
+<%
+    String getUserName =  System.getProperty("user.home");
+    String USER_NAME = getUserName.substring(getUserName.lastIndexOf("Users")+6);
+%>
 
 <form>
 
@@ -20,7 +30,7 @@
             <div class="form-group">
                 <span>Кем создано</span>
                 <div class="input-group">
-                    <input class="form-control" type="text" disabled name="creator">
+                    <input class="form-control" type="text" disabled name="creator" value="<%= USER_NAME %>">
                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
                 </div>
             </div>
@@ -65,7 +75,7 @@
             <div class="form-group">
                 <span>Дата начала</span>
                 <div class="input-group">
-                    <input class="form-control" type="date" name="date_to">
+                    <input class="form-control" type="date" name="date_to" value="${TODAY}" disabled>
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
             </div>
@@ -79,7 +89,7 @@
             <div class="form-group">
                 <span>Дата изменения</span>
                 <div class="input-group">
-                    <input class="form-control" type="date" name="date_change">
+                    <input class="form-control" type="date" name="date_change" value="${TODAY}" disabled>
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
             </div>

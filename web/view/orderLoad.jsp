@@ -95,15 +95,21 @@
             <div class="form-group">
                 <span>Дата изменения</span>
                 <div class="input-group">
-                    <input class="form-control" type="date" name="date_change" value="${row.date_change}">
+                    <input class="form-control" type="date" name="date_change" value="${row.date_change}" disabled>
                     <div class="input-group-addon"><i class="fa fa-calendar-o"></i></div>
                 </div>
             </div>
-            <hr>
-            <div class="form-group">
-                <span>Согласован</span>
-                <input class="form-control" type="checkbox" name="agreement">
-            </div>
+            <c:if test="${row.agreement == false}">
+                <hr>
+                <div class="form-group">
+                    <span>Согласован</span>
+                    <input class="form-control" type="checkbox" name="agreement">
+                </div>
+            </c:if>
+            <c:if test="${row.agreement == true}">
+                <input class="hideAgreement" type="checkbox" name="agreement">
+            </c:if>
+
 
         </c:forEach>
 
