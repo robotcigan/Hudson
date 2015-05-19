@@ -79,22 +79,25 @@
     });
     //historyChanges();
 
-
     // Отправка на сохранение измененного заказа
     $('#saveOrder').on("click", function(){
 
-        var name, creator, content, action, point_name, id_type_query, date_sla, date_to, date_from, date_change, agreement, type;
+        var name, creator, changer, content, action, point_name, id_type_query, date_sla, date_to, date_from, date_change, agreement, type;
 
         name = $( "input[name$='name']").val();
         creator = $( "input[name$='creator']").val();
+        changer = $( "input[name$='changer']").val();
         content = $( "input[name$='content']").val();
         action = $( "input[name$='action']").val();
         point_name = $( "input[name$='point_name']").val();
-        id_type_query = $( "input[name$='id_type_query']").val();
+        var id_type_query_before_parse = $( "select[name$='id_type_query']").val();
+        id_type_query = parseInt(id_type_query_before_parse.replace(/\D+/g,""));
         date_sla = $( "input[name$='date_sla']").val();
         date_to = $( "input[name$='date_to']").val();
         date_from = $( "input[name$='date_from']").val();
         date_change = $( "input[name$='date_change']").val();
+
+        console.log(date_change, changer);
 
         agreement = $( "input[name$='agreement']").is(":checked");
 
@@ -109,21 +112,37 @@
         $.ajax({
             method: "POST",
             url: "/order",
-            data: { id_query: id_query, name: name, creator: creator ,content: content, action: action, point_name: point_name, id_type_query: id_type_query, date_sla: date_sla, date_to: date_to, date_from: date_from, date_change: date_change, agreement: agreement ,changes: changes,type: type  },
-            success: function(){
-                $('#ajaxResult').text("Заказ изменен!");
-                    $('#ajaxResult').css({
-                        "display": "block" ,
-                        "bottom": 0
-                    });
-                setTimeout( '$("#ajaxResult").css("bottom", -55)', 5000 );
+            data: {
+                id_query: id_query,
+                name: name,
+                creator: creator,
+                changer: changer,
+                content: content,
+                action: action,
+                point_name: point_name,
+                id_type_query: id_type_query,
+                date_sla: date_sla,
+                date_to: date_to,
+                date_from: date_from,
+                date_change: date_change,
+                agreement: agreement,
+                changes: changes,
+                type: type
             },
-            error : function() {
+            success: function() {
+                $('#ajaxResult').text("Заказ изменен!");
+                $('#ajaxResult').css({
+                    "display": "block",
+                    "bottom": 0
+                });
+                setTimeout('$("#ajaxResult").css("bottom", -55)', 5000);
+            },
+            error: function() {
                 alert('Ошибка!');
             },
             statusCode: {
                 404: function() {
-                    alert( "Страница отсутствует!" );
+                    alert("Страница отсутствует!");
                 }
             }
         });
@@ -142,7 +161,8 @@
         content = $( "input[name$='content']").val();
         action = $( "input[name$='action']").val();
         point_name = $( "input[name$='point_name']").val();
-        id_type_query = $( "input[name$='id_type_query']").val();
+        var id_type_query_before_parse = $( "select[name$='id_type_query']").val();
+        id_type_query = parseInt(id_type_query_before_parse.replace(/\D+/g,""));
         date_sla = $( "input[name$='date_sla']").val();
         date_to = $( "input[name$='date_to']").val();
         date_from = $( "input[name$='date_from']").val();
@@ -156,21 +176,35 @@
         $.ajax({
             method: "POST",
             url: "/order",
-            data: { id_query: id_query, name: name, creator: creator,content: content, action: action, point_name: point_name, id_type_query: id_type_query, date_sla: date_sla, date_to: date_to, date_from: date_from, date_change: date_change, agreement: agreement,type: type  },
-            success: function(){
+            data: {
+                id_query: id_query,
+                name: name,
+                creator: creator,
+                content: content,
+                action: action,
+                point_name: point_name,
+                id_type_query: id_type_query,
+                date_sla: date_sla,
+                date_to: date_to,
+                date_from: date_from,
+                date_change: date_change,
+                agreement: agreement,
+                type: type
+            },
+            success: function() {
                 $('#ajaxResult').text("Новый заказ создан!");
                 $('#ajaxResult').css({
-                    "display": "block" ,
+                    "display": "block",
                     "bottom": 0
                 });
-                setTimeout( '$("#ajaxResult").css("bottom", -55)', 5000 );
+                setTimeout('$("#ajaxResult").css("bottom", -55)', 5000);
             },
-            error : function() {
+            error: function() {
                 alert('Ошибка!');
             },
             statusCode: {
                 404: function() {
-                    alert( "Страница отсутствует!" );
+                    alert("Страница отсутствует!");
                 }
             }
         });
@@ -180,7 +214,7 @@
     // Отправка на удаление заказа
     $('#deleteOrder').on("click", function(){
 
-        var type, creator, confirming;
+        var type, creator, confirming, changer, date_change;
 
         confirming = confirm("Вы уверенны что хотите его удалить?");
 
@@ -188,6 +222,8 @@
 
             id_query = $( "input[name$='id_query']").val();
             creator = $( "input[name$='creator']").val();
+            changer = $( "input[name$='changer']").val();
+            date_change = $( "input[name$='date_change']").val();
 
             // Определяет тип поступаещего запроса
             type = "delete";
@@ -195,7 +231,13 @@
             $.ajax({
                 method: "POST",
                 url: "/order",
-                data: { id_query: id_query, creator: creator,type: type },
+                data: {
+                    id_query: id_query,
+                    creator: creator,
+                    changer: changer,
+                    date_change: date_change,
+                    type: type
+                },
                 success: function(){
                     $('#ajaxResult').text("Заказ удален!");
                     $('#ajaxResult').css({

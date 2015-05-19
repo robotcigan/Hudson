@@ -63,12 +63,12 @@ public class DBConnect {
         }
     }
 
-    public void Query( String id_query, String queryName, String creator,String content , String action, String point_name, String id_type_query, String date_sla, String date_to, String date_from, String date_change, String agreement,String type  ){
+    public void Query( String id_query, String queryName, String creator, String changer, String content , String action, String point_name, String id_type_query, String date_sla, String date_to, String date_from, String date_change, String agreement,String type  ){
         try {
 
             //String updateQuery = " UPDATE query SET name = ?, content = ? WHERE ID_QUERY = '" + id_query + "'";
-            String updateQuery = " UPDATE query SET name = ?, creator=?,content = ?, action = ?, point_name = ?, id_type_query = ?, date_sla = ?, date_to = ?, date_from = ?, date_change = ?, agreement = ? WHERE ID_QUERY = ? ";
-            String newQuery = " INSERT INTO QUERY ( name, creator, content, action, point_name, id_type_query, date_sla,  date_to, date_from, date_change, agreement, ID_QUERY) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+            String updateQuery = " UPDATE query SET name = ?, creator=?, changer=?, content = ?, action = ?, point_name = ?, id_type_query = ?, date_sla = ?, date_to = ?, date_from = ?, date_change = ?, agreement = ? WHERE ID_QUERY = ? ";
+            String newQuery = " INSERT INTO QUERY ( name, creator, changer, content, action, point_name, id_type_query, date_sla,  date_to, date_from, date_change, agreement, ID_QUERY) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             //st.executeUpdate( updateQuery );
 
             PreparedStatement pst = con.prepareStatement(updateQuery);
@@ -82,20 +82,22 @@ public class DBConnect {
 
             pst.setString( 1, queryName );
             pst.setString( 2, creator );
-            pst.setString( 3, content );
-            pst.setString( 4, action );
-            pst.setString( 5, point_name );
-            pst.setString( 6, id_type_query );
-            pst.setString( 7, date_sla );
-            pst.setString( 8, date_to );
-            pst.setString( 9, date_from );
-            pst.setString( 10, date_change );
+            pst.setString( 3, changer );
+            pst.setString( 4, content );
+            pst.setString( 5, action );
+            pst.setString( 6, point_name );
+            pst.setString( 7, id_type_query );
+            pst.setString( 8, date_sla );
+            pst.setString( 9, date_to );
+            pst.setString( 10, date_from );
+            pst.setString( 11, date_change );
             // Согласован заказ или нет
-            pst.setString( 11, agreement );
+            pst.setString( 12, agreement );
             // Выбор строки, замыкающее значение
-            pst.setString( 12, id_query );
+            pst.setString( 13, id_query );
 
-            System.out.println( id_query + queryName + creator + content + action + point_name + id_type_query + date_sla + date_to + date_from + date_change + agreement );
+            System.out.println("Дата изменения" + date_change + "Кто изменил" + changer);
+            System.out.println( id_query + queryName + creator + changer + content + action + point_name + id_type_query + date_sla + date_to + date_from + date_change + agreement );
 
             pst.executeUpdate();
 
@@ -117,6 +119,21 @@ public class DBConnect {
                 // Использование нескольких одинаковых кавычек: deleteError = "<div class=\"alert alert-danger\" role=\"alert\">Вы не можете удалить этот заказ</div>";
                 System.out.println("Вы не можете удалить заказ, который создан не вами");
             }
+        }catch (Exception ex){
+            System.out.println(ex);
+        }
+    }
+
+    public void actionLog(String user, String action, String date,String id_query){
+        try{
+            String actionLog = "INSERT INTO action_log ( user, action, date, id_query ) values (?,?,?,?)";
+            PreparedStatement pst = con.prepareStatement( actionLog );
+            pst.setString( 1, user );
+            pst.setString( 2, action );
+            pst.setString( 3, date );
+            pst.setString( 4, id_query );
+
+            pst.executeUpdate();
         }catch (Exception ex){
             System.out.println(ex);
         }

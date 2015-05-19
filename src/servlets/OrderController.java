@@ -20,6 +20,7 @@ public class OrderController extends HttpServlet {
         String id_query = request.getParameter("id_query");
         String queryName = request.getParameter("name");
         String creator = request.getParameter("creator");
+        String changer = request.getParameter("changer");
         String content = request.getParameter("content");
         String action = request.getParameter("action");
         String point_name = request.getParameter("point_name");
@@ -42,7 +43,13 @@ public class OrderController extends HttpServlet {
         if(type.equals("delete")){
             connect.deleteQuery( id_query, creator );
         }else{
-            connect.Query( id_query, queryName, creator, content, action, point_name, id_type_query, date_sla, date_to, date_from, date_change, agreement,type );
+            connect.Query( id_query, queryName, creator, changer, content, action, point_name, id_type_query, date_sla, date_to, date_from, date_change, agreement,type );
+        }
+
+        if(type.equals("new")){
+            connect.actionLog( creator, type, date_to, id_query );
+        }else{
+            connect.actionLog( changer, type, date_change, id_query );
         }
 
 
