@@ -52,7 +52,6 @@ public class MyServlet extends HttpServlet {
         // Переменная для пользователя Windows
         request.setAttribute("localUser", USER_NAME);
 
-
         //System.out.println( "DB_LOGIN " + DB_LOGIN );
         //System.out.println( "LOGIN " + LOGIN );
         //System.out.println( "DB_PASSWORD " + DB_PASSWORD );

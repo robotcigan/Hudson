@@ -27,6 +27,8 @@
 
 <%@ include file="view/order.jsp" %>
 
+<%@ include file="view/action_log.jsp" %>
+
 <div id="view-order"></div>
 
 <div id="wrapper">

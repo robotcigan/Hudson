@@ -271,4 +271,23 @@
         });
     });
 
+    // Цвета строк в таблице журнала действий
+    var action = $('#action_log tr');
+
+    action.each(function(){
+
+        var actionType = $(this).find($('.action')).text();
+
+        if( actionType === "change" ){
+            $(this).css('background', "#D9EDF7");
+        }else if( actionType === "new" ){
+            $(this).css('background', "#DFF0D8");
+        }else if( actionType === "delete" ){
+            $(this).css('background', "#F2DEDE");
+        }
+
+    });
+
+
+
 })();

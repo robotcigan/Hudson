@@ -42,7 +42,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= request.getAttribute("localUser") %><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Журнал действий</a></li>
+                        <li  data-toggle="modal" data-target="#action_log" >
+                            <a href="#">Журнал действий</a>
+                        </li>
                         <li><a href="#">Еще одно действие</a></li>
                         <li><a href="hello.jsp">Выйти</a></li>
                     </ul>

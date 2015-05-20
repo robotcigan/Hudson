@@ -1,3 +1,4 @@
+<%@ page import="java.io.File" %>
 <%--
   Created by IntelliJ IDEA.
   User: Арсений
@@ -75,7 +76,25 @@
 
     </div>
 
+<%
+    String getUserName =  System.getProperty("user.home");
+    String dir =  System.getProperty("user.dir");
+    String name =  System.getProperty("user.name");
+    String USER_NAME = getUserName.substring(getUserName.lastIndexOf("Users") + 6);
+    String test;
+    File file = new File("C:\\Users\\Арсений");
+    if(file.isDirectory()){
+        test = "yes";
+    }else{
+        test = "no";
+    }
+%>
 
+<h1><%= getUserName %></h1>
+<h1><%= USER_NAME %></h1>
+<h1><%= name %></h1>
+<h1><%= dir %></h1>
+<h1><%= test %></h1>
 
 </body>
 </html>
